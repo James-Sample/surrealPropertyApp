@@ -1,0 +1,8 @@
+.add-property {
+    padding: 2px;
+}
+
+.property-form {
+    display: flex;
+    flex-direction: column;
+}
