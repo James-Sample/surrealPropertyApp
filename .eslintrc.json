@@ -25,6 +25,7 @@
     "rules": {
         "no-underscore-dangle": [0],
         "react/jsx-props-no-spreading": [0],
+        "prettier/prettier": ["error", { "doubleQuotes": true }],
         "react/jsx-filename-extension": [
           1,
           {

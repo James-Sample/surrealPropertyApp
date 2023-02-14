@@ -1,13 +1,19 @@
 import axios from "axios";
 
-const postData = (fields) => {
+const postData = (fields, setAlert) => {
   axios
     .post("http://localhost:4000/api/v1/PropertyListing/", fields)
-    .then((res) => {
-      console.log(res);
+    .then(() => {
+      setAlert({
+        message: "Property Added",
+        isSuccess: true,
+      });
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
+      setAlert({
+        message: "Couldn't add your property, please try again",
+        isSuccess: false,
+      });
     });
 };
 

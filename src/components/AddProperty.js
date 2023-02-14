@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/add-property.css";
 import postData from "../requests/postData";
+import Alert from "./Alert";
 
 const AddProperty = () => {
   const initialState = {
@@ -13,13 +14,20 @@ const AddProperty = () => {
       price: "",
       email: "",
     },
+    alert: {
+      message: "",
+      isSuccess: false,
+    },
   };
 
   const [fields, setFields] = useState(initialState.fields);
 
+  const [alert, setAlert] = useState(initialState.alert);
+
   const handleAddproperty = (event) => {
-    postData(fields);
+    postData(fields, setAlert);
     event.preventDefault();
+    setAlert({ message: "", isSuccess: false });
     // console.log(fields.title);
   };
 
@@ -29,18 +37,20 @@ const AddProperty = () => {
 
   return (
     <div className="add-property">
+      <Alert message={alert.message} success={alert.isSuccess} />
       <form onSubmit={handleAddproperty} className="property-form">
         <label htmlFor="title">
-          Title
+          Title:
           <input
             id="title"
             name="title"
             value={fields.title}
             onChange={handleFieldChange}
+            placeholder="3 Bed House"
           />
         </label>
         <label htmlFor="city">
-          City
+          City:
           <select
             id="city"
             name="city"
@@ -54,7 +64,7 @@ const AddProperty = () => {
           </select>
         </label>
         <label htmlFor="type">
-          Type
+          Type:
           <select
             id="type"
             name="type"
@@ -71,7 +81,7 @@ const AddProperty = () => {
           </select>
         </label>
         <label htmlFor="bedrooms">
-          Bedrooms
+          Bedrooms:
           <input
             id="bedrooms"
             name="bedrooms"
@@ -80,7 +90,7 @@ const AddProperty = () => {
           />
         </label>
         <label htmlFor="bathrooms">
-          Bathrooms
+          Bathrooms:
           <input
             id="bathrooms"
             name="bathrooms"
@@ -90,7 +100,7 @@ const AddProperty = () => {
           />
         </label>
         <label htmlFor="price">
-          Price
+          Price:
           <input
             id="price"
             name="price"
@@ -100,7 +110,7 @@ const AddProperty = () => {
           />
         </label>
         <label htmlFor="email">
-          Email
+          Email:
           <input
             id="email"
             name="email"
@@ -109,7 +119,9 @@ const AddProperty = () => {
             placeholder="e.g. yourname@gmail.com"
           />
         </label>
-        <button type="submit">Add</button>
+        <button className="submit-button" type="submit">
+          Add Property
+        </button>
       </form>
     </div>
   );
