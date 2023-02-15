@@ -9,7 +9,6 @@ import {
   faEnvelope,
   faHouse,
   faCity,
-  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 
 const PropertyCard = ({
@@ -20,41 +19,39 @@ const PropertyCard = ({
   bedrooms,
   price,
   email,
-}) => {
-  return (
-    <div className="property-card">
-      <div className="property-title">{title}</div>
-      <div className="property-city">
-        <FontAwesomeIcon icon={faCity} className="city-icon" />
-        {city}
+}) => (
+  <div className="property-card">
+    <div className="property-title">{title}</div>
+    <div className="property-city">
+      <FontAwesomeIcon icon={faCity} className="city-icon" />
+      {city}
+    </div>
+    <div className="property-type">
+      <FontAwesomeIcon icon={faHouse} className="type-icon" />
+      {type}
+    </div>
+    <div className="beds-baths">
+      <div className="property-bedrooms">
+        <FontAwesomeIcon icon={faBed} className="bed-icon" />
+        {bedrooms}
       </div>
-      <div className="property-type">
-        <FontAwesomeIcon icon={faHouse} className="type-icon" />
-        {type}
-      </div>
-      <div className="beds-baths">
-        <div className="property-bedrooms">
-          <FontAwesomeIcon icon={faBed} className="bed-icon" />
-          {bedrooms}
-        </div>
-        <div className="property-bathrooms">
-          <FontAwesomeIcon icon={faBath} className="bath-icon" />
-          {bathrooms}
-        </div>
-      </div>
-      <div className="property-price">
-        <FontAwesomeIcon icon={faSterlingSign} className="price-icon" />
-        {price}
-      </div>
-      <div className="property-email">
-        <a href={`mailto:${email}`} className="email-link">
-          <FontAwesomeIcon icon={faEnvelope} className="email-icon" />
-          Contact
-        </a>
+      <div className="property-bathrooms">
+        <FontAwesomeIcon icon={faBath} className="bath-icon" />
+        {bathrooms}
       </div>
     </div>
-  );
-};
+    <div className="property-price">
+      <FontAwesomeIcon icon={faSterlingSign} className="price-icon" />
+      {price}
+    </div>
+    <div className="property-email">
+      <a href={`mailto:${email}`} className="email-link">
+        <FontAwesomeIcon icon={faEnvelope} className="email-icon" />
+        Contact
+      </a>
+    </div>
+  </div>
+);
 
 PropertyCard.propTypes = {
   title: PropTypes.string.isRequired,

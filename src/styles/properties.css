@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+.property-cards {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin: 30px;
+}
+
+.properties {
+    padding: 10px;
+}
